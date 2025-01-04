@@ -1,0 +1,21 @@
+#!/bin/bash
+
+command_directory="$HOME/.local/share/passmate/"
+symbolic_link_command="$HOME/.local/bin/passmate"
+symbolic_link_uninstall="$HOME/.local/bin/passmate-uninstall"
+
+
+if [ -f "$symbolic_link_command" ]; then
+  echo "O comando já está instalado no seu sistema"
+  exit 0
+fi
+
+if [ ! -d "$command_directory" ]; then
+  mkdir -p $command_directory
+fi
+
+cp -r $(pwd)/** $command_directory
+
+ln -s "$command_directory/passmate" "$symbolic_link_command" 
+ln -s "$command_directory/scripts/uninstall" "$symbolic_link_uninstall" 
+
