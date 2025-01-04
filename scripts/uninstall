@@ -1,0 +1,20 @@
+#!/bin/bash
+
+command_directory="$HOME/.local/share/passmate/"
+symbolic_link_command="$HOME/.local/bin/passmate"
+symbolic_link_uninstall="$HOME/.local/bin/passmate-uninstall"
+
+if ! which passmate-teste > /dev/null 2>&1; then
+  echo "O commando não está instalado então não é possivel desinstalar"
+  exit 1
+fi
+
+rm -rf $command_directory
+rm $symbolic_link_command
+rm $symbolic_link_uninstall
+
+if [ $? -eq 0 ]; then
+  echo "comando desinstalado com sucesso"
+else
+  echo "falha ao tentar desinstalar o comando"
+fi
