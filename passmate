@@ -1,5 +1,9 @@
 #!/usr/bin/python3
+
+import modules.cli as cli
+import argparse as ap
 def main() -> None:
     parser: ap.ArgumentParser = cli.create("Gerenciador de Senhas")
+    args: ap.Namespace = cli.get_args(parser)
 if __name__ == "__main__":
     main()
